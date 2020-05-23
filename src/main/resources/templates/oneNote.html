@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:text="${#temporals.format(note.creationMoment, 'dd/MM/yyyy HH:mm', new java.util.Locale('en'))}">
+    Date
+</div>
+last edit
+<div th:text="${#temporals.format(note.editionMoment, 'dd/MM/yyyy HH:mm', new java.util.Locale('en'))}"
+     th:unless="${note.creationMoment == note.editionMoment}">
+    last edit
+</div>
+<table>
+    <tr>
+        <th>Subject</th>
+    </tr>
+    <tr>
+        <td th:text="${note.subject}">Subject</td>
+    </tr>
+    <tr>
+        <th>Content</th>
+    </tr>
+    <tr>
+        <td th:text="${note.content}">Subject</td>
+    </tr>
+</table>
+<a href="/notes">Return to list</a>
+</body>
+</html>
