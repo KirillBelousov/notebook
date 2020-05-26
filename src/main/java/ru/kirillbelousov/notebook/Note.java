@@ -3,6 +3,7 @@ package ru.kirillbelousov.notebook;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,18 +14,20 @@ public class Note {
     private final LocalDateTime creationMoment;
     private LocalDateTime editionMoment;
     private String subject;
+    @Lob
     private String content;
 
     Note() {
         this.creationMoment = LocalDateTime.now();
-        this.editionMoment = this.creationMoment;
+        setEditionMoment(this.creationMoment);
+        //this.editionMoment = this.creationMoment;
     }
 
     Note(String subject, String content) {
         this.creationMoment = LocalDateTime.now();
-        this.editionMoment = this.creationMoment;
-        this.subject = subject;
-        this.content = content;
+        setEditionMoment(this.creationMoment);
+        setSubject(subject);
+        setContent(content);
     }
 
     public Long getId() {
@@ -35,6 +38,10 @@ public class Note {
         this.id = id;
     }
 
+    public LocalDateTime getCreationMoment() {
+        return creationMoment;
+    }
+
     public LocalDateTime getEditionMoment() {
         return editionMoment;
     }
@@ -43,16 +50,17 @@ public class Note {
         this.editionMoment = editionMoment;
     }
 
-    public LocalDateTime getCreationMoment() {
-        return creationMoment;
-    }
-
     public String getSubject() {
         return subject;
     }
 
     public void setSubject(String subject) {
-        this.subject = subject;
+        if (subject != "" && content != null) {
+            this.subject = subject;
+        }
+        else {
+            this.subject = "no subject";
+        }
     }
 
     public String getContent() {
@@ -60,6 +68,11 @@ public class Note {
     }
 
     public void setContent(String content) {
-        this.content = content;
+        if (content != "" && content != null) {
+            this.content = content;
+        }
+        else {
+            this.content = "no content";
+        }
     }
 }

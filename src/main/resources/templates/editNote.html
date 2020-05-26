@@ -2,19 +2,58 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit note</title>
+    <link rel="stylesheet" th:href="@{/style.css}" href="style.css">
 </head>
 <body>
 <form action="/edit" method="post" name="editedNote">
     <input name="id" th:value="${note.id}" type="hidden"/>
-    <p>Subject</p>
-    <input name="subject" title="Subject" type="text" th:value="${note.subject}"/>
-    <br>
-    Note
-    <br>
-    <input name="content" title="Content" type="text" th:value="${note.content}"/>
-    <br>
-    <input type="submit" value="Edit"/>
+    <table>
+        <tr>
+            <td>
+            <span th:text="${#temporals.format(note.creationMoment, 'dd/MM/yyyy HH:mm', new java.util.Locale('en'))}">
+                Date
+            </span>
+                <span th:text="' last edit ' + ${#temporals.format(note.editionMoment, 'dd/MM/yyyy HH:mm', new java.util.Locale('en'))}"
+                      th:unless="${note.creationMoment == note.editionMoment}">
+                        Date of the last edition
+            </span>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Subject
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input name="subject" title="Subject" type="text" th:value="${note.subject}" size="50"/>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Content
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <textarea name="content" title="Content" th:text="${note.content}" cols="50" rows="10"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <table>
+                <tr>
+                    <td>
+                        <input type="submit" value="Edit"/>
+                    </td>
+                    <td>
+                        <input type="submit" value="Cancel" form="cancel">
+                    </td>
+                </tr>
+            </table>
+        </tr>
+    </table>
 </form>
+<form th:action="@{/notes/{id}(id=${note.id})}" id="cancel" methog="get"></form>
 </body>
 </html>

@@ -3,17 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>New note</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<form action="new" method="post" name="newNote">
-    <p>Subject</p>
-    <input name="subject" title="Subject" type="text"/>
-    <br>
-    Note
-    <br>
-    <input name="content" title="Content" type="text"/>
-    <br>
-    <input type="submit" value="Save"/>
+
+<form action="/new" method="post" name="create">
+    <table>
+        <tr>
+            <th>
+                Subject
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input name="subject" title="Subject" type="text" size="50"/>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Content
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <textarea name="content" title="Content" cols="50" rows="10"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <table>
+                <tr>
+            <td>
+                <input type="submit" value="Save"/>
+            </td>
+            <td>
+                <input type="submit" value="Cancel" form="cancel">
+            </td>
+                </tr>
+            </table>
+        </tr>
+    </table>
 </form>
+
+<form action="/notes" id="cancel" methog="get"></form>
+
 </body>
 </html>
