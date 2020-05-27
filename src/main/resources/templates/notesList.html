@@ -2,38 +2,39 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>List of notes</title>
+    <title th:text="#{title.list}">List of notes</title>
     <link rel="stylesheet" th:href="@{/style.css}" href="style.css">
 </head>
 <body>
-    <h1>List of notes</h1>
+<p th:replace="fragments :: locale"></p>
+    <h1 th:text="#{title.list}">List of notes</h1>
     <table width="500" th:unless="${#lists.isEmpty(notes)}">
         <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Subject</th>
+            <th th:text="#{date}">Date</th>
+            <th th:text="#{time}">Time</th>
+            <th th:text="#{subject}">Subject</th>
         </tr>
         <tr th:each="note : ${notes}">
-            <td th:text="${#temporals.format(note.creationMoment, 'dd/MM/yyyy', new java.util.Locale('en'))}">
+            <td th:text="${#temporals.format(note.creationMoment.toLocalDate())}">
                 Date
             </td>
-            <td th:text="${#temporals.format(note.creationMoment, 'HH:mm', new java.util.Locale('en'))}">
+            <td th:text="${#temporals.format(note.creationMoment, 'HH:mm',)}">
                 Time
             </td>
             <td ><a th:href="@{/notes/{id}(id=${note.id})}" th:text="${note.subject}">Subject</a></td>
             <td>
                 <form th:action="@{/delete/{id}(id=${note.id})}" method="post">
-                    <input type="submit" value="Delete"/>
+                    <input type="submit" th:value="#{delete}"/>
                 </form>
             </td>
             <td>
                 <form th:action="@{/edit/{id}(id=${note.id})}" method="post">
-                    <input type="submit" value="Edit"/>
+                    <input type="submit" th:value="#{edit}"/>
                 </form>
             </td>
         </tr>
     </table>
     <p th:if="${#lists.isEmpty(notes)}">The list is empty :(</p>
-    <p><a href="/new">Мake a new note</a></p>
+    <p><a href="/new" th:text="#{list.make}">Мake a new note</a></p>
 </body>
 </html>

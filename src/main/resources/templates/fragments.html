@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+</head>
+<body>
+<p th:fragment="locale" style="text-align:left">
+    <a href="/lcl/en">EN</a>
+    <a href="/lcl/us">US</a>
+    <a href="/lcl/de">DE</a>
+</p>
+<td th:fragment="date-time">
+            <span th:text="${#temporals.format(note.creationMoment.toLocalDate())}">
+                Date
+            </span>
+            <span th:text="${#temporals.format(note.creationMoment, 'HH:mm')}">
+                Time
+            </span>
+            <span th:text="#{last_edit}"
+                  th:unless="${note.creationMoment == note.editionMoment}">
+                last edit
+            </span>
+            <span th:text="${#temporals.format(note.editionMoment.toLocalDate())}"
+                  th:unless="${note.creationMoment == note.editionMoment}">
+                        Date of the last edition
+            </span>
+            <span th:text="${#temporals.format(note.editionMoment, 'HH:mm')}"
+                  th:unless="${note.creationMoment == note.editionMoment}">
+                        Time of the last edition
+            </span>
+</td>
+</body>
+</html>

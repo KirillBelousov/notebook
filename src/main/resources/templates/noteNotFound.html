@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Note not found</title>
+    <title th:text="#{title.not_found}">Note not found</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-    <p>There is no such a note :(</p>
-    <p><a href="/">Return to main</a></p>
+<p th:replace="fragments :: locale"></p>
+    <p th:text="#{not_found.no_note}">There is no such a note :(</p>
+    <p ><a href="/" th:text="#{not_found.return_main}">Return to main</a></p>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package ru.kirillbelousov.notebook;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Controller;

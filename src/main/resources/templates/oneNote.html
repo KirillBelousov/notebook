@@ -2,40 +2,34 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Your note</title>
+    <title th:text="#{title.note}">Your note</title>
     <link rel="stylesheet" th:href="@{/style.css}" href="style.css">
 </head>
 <body>
+<p th:replace="fragments :: locale"></p>
 <table width="500">
     <tr>
-        <td>
-            <span th:text="${#temporals.format(note.creationMoment, 'dd/MM/yyyy HH:mm', new java.util.Locale('en'))}">
-                Date
-            </span>
-            <span th:text="' last edit ' + ${#temporals.format(note.editionMoment, 'dd/MM/yyyy HH:mm', new java.util.Locale('en'))}"
-                  th:unless="${note.creationMoment == note.editionMoment}">
-                        Date of the last edition
-            </span>
+        <td th:replace="fragments :: date-time">
         </td>
     </tr>
     <tr>
-        <th>Subject</th>
+        <th th:text="#{subject}">Subject</th>
     </tr>
     <tr>
         <td th:text="${note.subject}">Subject</td>
     </tr>
     <tr>
-        <th>Content</th>
+        <th th:text="#{content}">Content</th>
     </tr>
     <tr>
-        <td th:text="${note.content}">Subject</td>
+        <td th:text="${note.content}">Content</td>
     </tr>
     <tr>
         <table>
             <tr>
-                <td><input type="submit" value="Edit" form="edit"/></td>
-                <td><input type="submit" value="Delete" form="delete"/></td>
-                <td><input type="submit" value="List" form="toList"/></td>
+                <td><input type="submit" th:value="#{edit}" form="edit"/></td>
+                <td><input type="submit" th:value="#{delete}" form="delete"/></td>
+                <td><input type="submit" th:value="#{list}" form="toList"/></td>
             </tr>
         </table>
     </tr>

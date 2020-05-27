@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit note</title>
+    <title th:text="#{title.edit}">Edit note</title>
     <link rel="stylesheet" th:href="@{/style.css}" href="style.css">
 </head>
 <body>
@@ -10,18 +10,11 @@
     <input name="id" th:value="${note.id}" type="hidden"/>
     <table>
         <tr>
-            <td>
-            <span th:text="${#temporals.format(note.creationMoment, 'dd/MM/yyyy HH:mm', new java.util.Locale('en'))}">
-                Date
-            </span>
-                <span th:text="' last edit ' + ${#temporals.format(note.editionMoment, 'dd/MM/yyyy HH:mm', new java.util.Locale('en'))}"
-                      th:unless="${note.creationMoment == note.editionMoment}">
-                        Date of the last edition
-            </span>
+            <td th:replace="fragments :: date-time">
             </td>
         </tr>
         <tr>
-            <th>
+            <th th:text="#{subject}">
                 Subject
             </th>
         </tr>
@@ -31,7 +24,7 @@
             </td>
         </tr>
         <tr>
-            <th>
+            <th th:text="#{content}">
                 Content
             </th>
         </tr>
@@ -44,10 +37,10 @@
             <table>
                 <tr>
                     <td>
-                        <input type="submit" value="Edit"/>
+                        <input type="submit" th:value="#{edit}"/>
                     </td>
                     <td>
-                        <input type="submit" value="Cancel" form="cancel">
+                        <input type="submit" th:value="#{cancel}" form="cancel">
                     </td>
                 </tr>
             </table>
