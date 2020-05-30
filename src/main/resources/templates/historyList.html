@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{title.history}">History</title>
+    <link rel="stylesheet" th:href="@{/style.css}" href="style.css">
+</head>
+<body>
+
+<p th:replace="fragments :: locale"></p>
+<table width="500" th:each="note : ${notes}" style="border-bottom: 2px solid black">
+    <tr>
+        <td style="height: 24pt; vertical-align: bottom">
+            <span th:text="${#temporals.format(note.editionMoment.toLocalDate())}">
+                Date
+            </span>
+            <span th:text="${#temporals.format(note.editionMoment, 'HH:mm')}">
+                Time
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <th th:text="#{subject}">Subject</th>
+    </tr>
+    <tr>
+        <td th:text="${note.subject}">Subject</td>
+    </tr>
+    <tr>
+        <th th:text="#{content}">Content</th>
+    </tr>
+    <tr>
+        <td th:text="${note.content}">Content</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td style="height: 24pt; vertical-align: bottom">
+            <form th:action="@{/notes/{id}(id=${noteId})}" methog="get" id="return">
+                <input type="submit" th:value="#{return}" form="return"/>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

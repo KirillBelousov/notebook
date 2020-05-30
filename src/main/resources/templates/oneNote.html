@@ -30,6 +30,7 @@
                 <td><input type="submit" th:value="#{edit}" form="edit"/></td>
                 <td><input type="submit" th:value="#{delete}" form="delete"/></td>
                 <td><input type="submit" th:value="#{list}" form="toList"/></td>
+                <td><input type="submit" th:value="#{history}" form="showHistory"/></td>
             </tr>
         </table>
     </tr>
@@ -37,5 +38,6 @@
     <form th:action="@{/edit/{id}(id=${note.id})}" method="post" id="edit"></form>
     <form th:action="@{/delete/{id}(id=${note.id})}" method="post" id="delete"></form>
     <form action="/notes" methog="get" id="toList"></form>
+    <form th:action="@{/history/{id}(id=${note.id})}" methog="get" id="showHistory"></form>
 </body>
 </html>

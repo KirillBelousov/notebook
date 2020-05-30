@@ -1,5 +1,7 @@
 package ru.kirillbelousov.notebook;
 
+import org.hibernate.envers.Audited;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,6 +9,7 @@ import javax.persistence.Lob;
 import java.time.LocalDateTime;
 
 @Entity
+@Audited
 public class Note {
     @Id
     @GeneratedValue
