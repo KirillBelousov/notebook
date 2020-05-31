@@ -37,4 +37,12 @@ public class LocaleController {
         String referer = request.getHeader("Referer");
         return "redirect:"+ referer;
     }
+
+    @GetMapping("/ru")
+    public String setКГ(HttpServletRequest request, HttpServletResponse response) {
+        LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
+        localeResolver.setLocale(request, response, new Locale("ru", "RU"));
+        String referer = request.getHeader("Referer");
+        return "redirect:"+ referer;
+    }
 }

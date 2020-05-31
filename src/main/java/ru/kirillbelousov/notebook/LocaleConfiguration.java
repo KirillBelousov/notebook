@@ -27,9 +27,9 @@ import java.util.Locale;
 public class LocaleConfiguration implements WebMvcConfigurer {
     @Bean
     public LocaleResolver localeResolver() {
-        SessionLocaleResolver slr = new SessionLocaleResolver();
-        slr.setDefaultLocale(Locale.UK);
-        return slr;
+        SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
+        sessionLocaleResolver.setDefaultLocale(Locale.UK);
+        return sessionLocaleResolver;
     }
 }
 
