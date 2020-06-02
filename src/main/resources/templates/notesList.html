@@ -23,12 +23,12 @@
             </td>
             <td ><a th:href="@{/notes/{id}(id=${note.id})}" th:text="${note.subject}">Subject</a></td>
             <td>
-                <form th:action="@{/notes/delete/{id}(id=${note.id})}" method="post">
+                <form th:action="@{/notes/{id}/delete(id=${note.id})}" method="post">
                     <input type="submit" th:value="#{delete}"/>
                 </form>
             </td>
             <td>
-                <form th:action="@{/notes/edit/{id}(id=${note.id})}" method="post">
+                <form th:action="@{/notes/{id}/edit(id=${note.id})}" method="post">
                     <input type="submit" th:value="#{edit}"/>
                 </form>
             </td>

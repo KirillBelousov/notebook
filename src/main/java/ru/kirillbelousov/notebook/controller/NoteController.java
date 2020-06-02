@@ -50,7 +50,7 @@ public class NoteController {
         return "redirect:" + newNote.getId();
     }
 
-    @PostMapping("/edit/{id}")
+    @PostMapping("/{id}/edit")
     public String getForEdit(@PathVariable Long id, Model model) {
         try {
             Note note = noteService.getById(id);
@@ -68,7 +68,7 @@ public class NoteController {
         return "redirect:" + note.getId();
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/{id}/delete")
     public String delete(@PathVariable Long id) {
         noteService.deleteById(id);
         return "redirect:/notes";

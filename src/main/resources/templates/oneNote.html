@@ -35,8 +35,8 @@
         </table>
     </tr>
 </table>
-    <form th:action="@{/notes/edit/{id}(id=${note.id})}" method="post" id="edit"></form>
-    <form th:action="@{/notes/delete/{id}(id=${note.id})}" method="post" id="delete"></form>
+    <form th:action="@{/notes/{id}/edit(id=${note.id})}" method="post" id="edit"></form>
+    <form th:action="@{/notes/{id}/delete(id=${note.id})}" method="post" id="delete"></form>
     <form action="/notes" methog="get" id="toList"></form>
     <form th:action="@{/notes/{id}/history(id=${note.id})}" methog="get" id="showHistory"></form>
 </body>
