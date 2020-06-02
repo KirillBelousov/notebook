@@ -23,18 +23,18 @@
             </td>
             <td ><a th:href="@{/notes/{id}(id=${note.id})}" th:text="${note.subject}">Subject</a></td>
             <td>
-                <form th:action="@{/delete/{id}(id=${note.id})}" method="post">
+                <form th:action="@{/notes/delete/{id}(id=${note.id})}" method="post">
                     <input type="submit" th:value="#{delete}"/>
                 </form>
             </td>
             <td>
-                <form th:action="@{/edit/{id}(id=${note.id})}" method="post">
+                <form th:action="@{/notes/edit/{id}(id=${note.id})}" method="post">
                     <input type="submit" th:value="#{edit}"/>
                 </form>
             </td>
         </tr>
     </table>
     <p th:if="${#lists.isEmpty(notes)}">The list is empty :(</p>
-    <p><a href="/new" th:text="#{list.make}">Мake a new note</a></p>
+    <p><a href="/notes/new" th:text="#{list.make}">Мake a new note</a></p>
 </body>
 </html>

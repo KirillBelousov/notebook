@@ -1,4 +1,4 @@
-package ru.kirillbelousov.notebook;
+package ru.kirillbelousov.notebook.entity;
 
 import org.hibernate.envers.Audited;
 

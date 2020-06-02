@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/style.css}" href="style.css">
 </head>
 <body>
-<form action="/edit" method="post" name="editedNote">
+<form action="/notes/edit" method="post" name="editedNote">
     <input name="id" th:value="${note.id}" type="hidden"/>
     <table>
         <tr>

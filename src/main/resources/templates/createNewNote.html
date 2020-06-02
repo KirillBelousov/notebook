@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{title.new}">New note</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" th:href="@{/style.css}" href="style.css">
 </head>
 <body>
-<form action="/new" method="post" name="create">
+<form action="/notes/new" method="post" name="create">
     <table>
         <tr>
             <th th:text="#{subject}">
